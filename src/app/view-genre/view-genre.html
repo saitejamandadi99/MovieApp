@@ -1,0 +1,24 @@
+<h2>Genre List</h2>
+<div>
+    <a routerLink="/addgenre" class="nav-item">Add Genre</a>
+</div>
+<table class="table table-bordered table-stripped">
+    <thead>
+        <tr>
+            <th>Genre Code</th>
+            <th>Genre Desc</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(genre of lstGenre;track genre.genreId; let i = $index ){
+            <tr>
+                <td>{{genre.genreCode}}</td>
+                <td>{{genre.genreDesc}}</td>
+                <td>
+                    <button routerLink="/editgenre" class="btn btn-secondary">Edit</button> | <button routerLink="/deletegenre" class="btn btn-danger">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
