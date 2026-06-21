@@ -1,6 +1,6 @@
-<h2>Edit Genre</h2>
+<h2>Delete Genre</h2>
 
-<form [formGroup]="genreForm" (ngSubmit)="editGenre()">
+<form [formGroup]="genreForm" (ngSubmit)="deleteGenre()">
     
     <div class="form-group">
        <label >Genre Id : {{genreId.value}}</label>
@@ -34,7 +34,7 @@
 
     <div class="form-group mt-2">
         <button type="submit" class="btn btn-primary" [disabled]="genreForm.invalid">
-            Edit Genre
+            Delete Genre
         </button>
     </div>
 

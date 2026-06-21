@@ -4,12 +4,13 @@ import { AddGenre } from './add-genre/add-genre';
 import { EditGenre } from './edit-genre/edit-genre';
 import { ViewGenre } from './view-genre/view-genre';
 import { Errorpage } from './errorpage/errorpage';
-
+import { DeleteGenreComponent } from './delete-genre-component/delete-genre-component';
 export const routes: Routes = [
     {path:'',component:Home},
     {path:'home',component:Home},
     {path:'viewgenre',component:ViewGenre},
     {path:'addgenre',component:AddGenre},
-    {path:'editgenre',component:EditGenre},
+    {path:'editgenre/:id',component:EditGenre},
+    {path:'deletegenre/:id', component:DeleteGenreComponent},
     {path:'**',component:Errorpage}
 ];

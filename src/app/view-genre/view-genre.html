@@ -16,7 +16,7 @@
                 <td>{{genre.genreCode}}</td>
                 <td>{{genre.genreDesc}}</td>
                 <td>
-                    <button routerLink="/editgenre" class="btn btn-secondary">Edit</button> | <button routerLink="/deletegenre" class="btn btn-danger">Delete</button>
+                    <button [routerLink]="['/editgenre', genre.genreId]" class="btn btn-secondary">Edit</button> | <button [routerLink]="['/deletegenre', genre.genreId]" class="btn btn-danger">Delete</button>
                 </td>
             </tr>
         }

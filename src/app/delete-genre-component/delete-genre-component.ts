@@ -3,32 +3,32 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { OnInit } from '@angular/core';
 import { IGenre } from '../models/genre_interface';
-import { required } from '@angular/forms/signals';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GenreService } from '../genre-service';
 
 @Component({
-  selector: 'app-edit-genre',
-  imports: [ReactiveFormsModule,NgIf],
-  templateUrl: './edit-genre.html',
-  styleUrl: './edit-genre.css',
+  selector: 'app-delete-genre-component',
+  imports: [ReactiveFormsModule, NgIf, ],
+  templateUrl: './delete-genre-component.html',
+  styleUrl: './delete-genre-component.css',
 })
-export class EditGenre implements OnInit {
-  genre :IGenre | undefined = {genreId:0,genreCode:'', genreDesc:''}
-  id:number =0;
+export class DeleteGenreComponent implements OnInit {
+  genre:IGenre | undefined={genreId:0,genreCode:'', genreDesc:''}
+  id:number=0;
 
-  //reactive form 
+  //reactive forms
   genreForm : FormGroup = new FormGroup({
     genreId : new FormControl(),
-    genreCode : new FormControl('',[Validators.required, Validators.pattern('[a-zA-Z\d]{5}')]),
+    genreCode : new FormControl('',[Validators.required]),
     genreDesc: new FormControl('',[Validators.required, Validators.minLength(5)])
   });
 
-  constructor(private activatedRoute: ActivatedRoute, private service : GenreService, private router: Router ){}
+  constructor(private activatedRoute: ActivatedRoute, private service : GenreService, private router: Router ){
+
+  }
 
   ngOnInit(): void {
-      //get the id from the route
-      this.id = this.activatedRoute.snapshot.params['id'];
+       this.id = this.activatedRoute.snapshot.params['id'];
       //check if any genre exists with the id
       this.genre = this.service.getGenres().find(g=>g.genreId == this.id);
       console.log(`id : ${this.id}`);
@@ -38,19 +38,16 @@ export class EditGenre implements OnInit {
       let index = this.service.getGenres().findIndex(g=>this.genre?.genreId == g.genreId);
       console.log(`index : ${index}`);
 
-      //if genre exists, initialize the form values with the genre details 
       if(this.genre!=null){
         this.genreForm.controls['genreId'].setValue(this.genre?.genreId);
         this.genreForm.controls['genreCode'].setValue(this.genre?.genreCode);
         this.genreForm.controls['genreDesc'].setValue(this.genre?.genreDesc);
-        //let index = this.service.getGenres().findIndex(g=>this.genre)
       }
   }
 
-  editGenre(){
-    //onsubmit if the form - call the service method edit genre()
-    this.service.editGenre(this.id, this.genreForm.value as IGenre);
-    console.log(`Updated values : ${this.genreForm.value}`);
+
+  deleteGenre(){
+   this.service.deleteGenre(this.id)
     this.router.navigate(['/viewgenre']);
   }
 
@@ -65,5 +62,4 @@ export class EditGenre implements OnInit {
   get genreDesc() : FormControl{
     return this.genreForm.controls['genreDesc'] as FormControl
   }
-
 }

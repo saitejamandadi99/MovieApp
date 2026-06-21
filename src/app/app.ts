@@ -5,9 +5,10 @@ import { AddGenre } from './add-genre/add-genre';
 import { ViewGenre } from './view-genre/view-genre';
 import { EditGenre } from './edit-genre/edit-genre';
 import { Errorpage } from './errorpage/errorpage';
+import { DeleteGenreComponent } from './delete-genre-component/delete-genre-component';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, Home, AddGenre, EditGenre, ViewGenre,Errorpage],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, Home, AddGenre, EditGenre, ViewGenre,Errorpage, DeleteGenreComponent ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
