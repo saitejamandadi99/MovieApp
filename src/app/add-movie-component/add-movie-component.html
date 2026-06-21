@@ -1,0 +1,79 @@
+<h2>Add Movie</h2>
+
+<form [formGroup] = "movieForm" (ngSubmit) = "addMovie()" >
+    <div class="form-group">
+        <input hidden name="movieId" formControlName = "movieId" id="movieId" class="form-control">
+    </div>
+
+    <div class="form-control">
+        <label >Movie Name : </label>
+        <input type="text" name="movieName" id="movieName" formControlName="movieName" class="form-control">
+        <div *ngIf="movieForm.get('movieName')?.invalid &&    (movieForm.get('movieName')?.touched || movieForm.get('movieName')?.dirty)">
+
+            <div *ngIf="movieForm.get('movieName')?.hasError('required')" class="text-danger">
+                Name is required
+            </div>
+        </div>
+    </div>
+
+    <div class="form-control">
+        <label >Movie Earning : </label>
+        <input type="number" name="movieEarnings" id="movieEarnings" formControlName="movieEarnings" class="form-control">
+        <div *ngIf="movieForm.get('movieEarnings')?.invalid &&    (movieForm.get('movieEarnings')?.touched || movieForm.get('movieEarnings')?.dirty)">
+
+            <div *ngIf="movieForm.get('movieEarnings')?.hasError('required')" class="text-danger">
+                Earning is required
+            </div>
+        </div>
+    </div>
+
+    <div class="form-control">
+        <label >Movie Rating : </label>
+        <input type="number" name="movieRating" id="movieRating" formControlName="movieRating" class="form-control">
+        <div *ngIf="movieForm.get('movieRating')?.invalid &&    (movieForm.get('movieRating')?.touched || movieForm.get('movieRating')?.dirty)">
+
+            <div *ngIf="movieForm.get('movieRating')?.hasError('required')" class="text-danger">
+                Rating is required
+            </div>
+            <div *ngIf="movieRating.hasError('min')" class="text-danger">
+                Rating cannot be less than 0
+            </div>
+
+            <div *ngIf="movieRating.hasError('max')" class="text-danger">
+                Rating cannot be greater than 10
+            </div>
+        </div>
+    </div>
+
+    <div class="form-control">
+        <label >Release Date : </label>
+        <input type="date" name="releaseDate" id="releaseDate" formControlName="releaseDate" class="form-control">
+        <div *ngIf="movieForm.get('releaseDate')?.invalid &&    (movieForm.get('releaseDate')?.touched || movieForm.get('releaseDate')?.dirty)">
+
+            <div *ngIf="movieForm.get('releaseDate')?.hasError('required')" class="text-danger">
+                release Date is required
+            </div>
+        </div>
+    </div>
+
+    <div class="form-control">
+        <label >Genre Id : </label>
+        <select formControlName="genreId" class="form-control">
+            <option value="">Select Genre</option>
+            <option value="1">Romance</option>
+            <option value="2">Historical</option>
+            <option value="3">Autobiography</option>
+            <option value="4">Adventure</option>
+        </select>
+        <div *ngIf="movieForm.get('genreId')?.invalid &&    (movieForm.get('genreId')?.touched || movieForm.get('genreId')?.dirty)">
+
+            <div *ngIf="movieForm.get('genreId')?.hasError('required')" class="text-danger">
+                genreId is required
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="movieForm.invalid">
+            Add Movie
+        </button>
+</form>

@@ -5,6 +5,10 @@ import { EditGenre } from './edit-genre/edit-genre';
 import { ViewGenre } from './view-genre/view-genre';
 import { Errorpage } from './errorpage/errorpage';
 import { DeleteGenreComponent } from './delete-genre-component/delete-genre-component';
+import { ViewMoviesComponent } from './view-movies-component/view-movies-component';
+import { AddMovieComponent } from './add-movie-component/add-movie-component';
+import { EditMovieComponent } from './edit-movie-component/edit-movie-component';
+import { DeleteMovieComponent } from './delete-movie-component/delete-movie-component';
 export const routes: Routes = [
     {path:'',component:Home},
     {path:'home',component:Home},
@@ -12,5 +16,9 @@ export const routes: Routes = [
     {path:'addgenre',component:AddGenre},
     {path:'editgenre/:id',component:EditGenre},
     {path:'deletegenre/:id', component:DeleteGenreComponent},
+    {path:'viewmovies',component:ViewMoviesComponent},
+    {path:'addmovie',component:AddMovieComponent},
+    {path:'editmovie/:id',component:EditMovieComponent},
+    {path:'deletemovie/:id', component:DeleteMovieComponent},
     {path:'**',component:Errorpage}
 ];
