@@ -1,6 +1,6 @@
 <h2>Genre List Api Service </h2>
 <div>
-    <a routerLink="/addgenre" class="nav-item">Add Genre</a>
+    <a routerLink="/addgenresapi" class="nav-item">Add Genre</a>
 </div>
 
 
@@ -19,7 +19,7 @@
                 <td>{{genre.genreCode}}</td>
                 <td>{{genre.genreDesc}}</td>
                 <td>
-                    <button [routerLink]="['/editgenre', genre.genreId]" class="btn btn-secondary">Edit</button> | <button [routerLink]="['/deletegenre', genre.genreId]" class="btn btn-danger">Delete</button>
+                    <button [routerLink]="['/editgenreapi', genre.genreId]" class="btn btn-secondary">Edit</button> | <button [routerLink]="['/deletegenreapi', genre.genreId]" class="btn btn-danger">Delete</button>
                 </td>
             </tr>
         }

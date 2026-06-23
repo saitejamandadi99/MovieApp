@@ -14,4 +14,25 @@ export class ApiService {
     getGenres(): Observable<IGenre[]>{
         return this.http.get<IGenre[]>('https://localhost:7283/api/Genre');
     }
+
+
+    deleteGerne(id:number):Observable<any>{
+        return this.http.delete(`https://localhost:7283/api/Genre/${id}`);
+
+    }
+
+    getGenreById(id:number):Observable<IGenre>{
+        return this.http.get<IGenre>(`https://localhost:7283/api/Genre/${id}`)
+    }
+
+
+    editGenre(id:number, genre:IGenre):Observable<any>{
+
+        return this.http.put(`https://localhost:7283/api/Genre/${id}`, genre);
+    }
+
+    addGenre(genre:IGenre):Observable<any>{
+        genre.genreId = 0;
+        return this.http.post('https://localhost:7283/api/Genre',genre);
+    }
 }
