@@ -1,0 +1,73 @@
+<h2>Delete Movie</h2>
+
+<form [formGroup] = "userForm" (ngSubmit) = "deleteUser()" >
+    <div class="form-group">
+        <input hidden name="userId" formControlName = "userId" id="userId" class="form-control">
+    </div>
+
+    <div class="form-control">
+        <label >User Name : </label>
+        <input type="text" name="username" id="username" formControlName="username" class="form-control">
+        <div *ngIf="userForm.get('username')?.invalid &&    (userForm.get('username')?.touched || userForm.get('username')?.dirty)">
+
+            <div *ngIf="userForm.get('username')?.hasError('required')" class="text-danger">
+                Name is required
+            </div>
+        </div>
+    </div>
+
+    <div class="form-control">
+        <label >Password : </label>
+        <input type="password" name="password" id="password" formControlName="password" class="form-control">
+        <div *ngIf="userForm.get('password')?.invalid &&    (userForm.get('password')?.touched || userForm.get('password')?.dirty)">
+
+            <div *ngIf="userForm.get('password')?.hasError('required')" class="text-danger">
+                password is required
+            </div>
+        </div>
+    </div>
+
+    <div class="form-control">
+        <label >Phone Number : </label>
+        <input type="text" name="phoneNo" id="phoneNo" formControlName="phoneNo" class="form-control">
+        <div *ngIf="userForm.get('phoneNo')?.invalid &&    (userForm.get('phoneNo')?.touched || userForm.get('phoneNo')?.dirty)">
+
+            <div *ngIf="userForm.get('phoneNo')?.hasError('required')" class="text-danger">
+                phone no is required
+            </div>
+            <div *ngIf="phoneNo.hasError('pattern')" class="text-danger">
+                phone number cannot be less than 10 digits
+            </div>
+        </div>
+    </div>
+
+    <div class="form-control">
+        <label >Email Id : </label>
+        <input type="text" name="emailId" id="emailId" formControlName="emailId" class="form-control">
+        <div *ngIf="userForm.get('emailId')?.invalid &&    (userForm.get('emailId')?.touched || userForm.get('emailId')?.dirty)">
+
+            <div *ngIf="userForm.get('emailId')?.hasError('required')" class="text-danger">
+                Email Id is required
+            </div>
+        </div>
+    </div>
+
+    <div class="form-control">
+        <label >Role Id : </label>
+        <select formControlName="roleId" class="form-control">
+            <option value="">Select Role</option>
+            <option value="1">Admin</option>
+            <option value="2">Member</option>
+        </select>
+        <div *ngIf="userForm.get('roleId')?.invalid &&    (userForm.get('roleId')?.touched || userForm.get('roleId')?.dirty)">
+
+            <div *ngIf="userForm.get('roleId')?.hasError('required')" class="text-danger">
+                role id is required
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">
+            Delete User
+    </button>
+</form>

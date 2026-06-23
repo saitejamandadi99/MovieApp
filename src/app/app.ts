@@ -10,9 +10,12 @@ import { AddMovieComponent } from './add-movie-component/add-movie-component';
 import { EditMovieComponent } from './edit-movie-component/edit-movie-component';
 import { ViewMoviesComponent } from './view-movies-component/view-movies-component';
 import { DeleteMovieComponent } from './delete-movie-component/delete-movie-component';
+import { ViewUsersComponent } from './view-users-component/view-users-component';
+import { AddUserComponent } from './add-user-component/add-user-component';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, Home, AddGenre, EditGenre, ViewGenre,Errorpage, DeleteGenreComponent , AddMovieComponent, EditMovieComponent, ViewMoviesComponent, DeleteMovieComponent],
+  standalone: true,
+  imports: [RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

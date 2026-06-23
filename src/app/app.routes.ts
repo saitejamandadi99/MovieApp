@@ -9,6 +9,11 @@ import { ViewMoviesComponent } from './view-movies-component/view-movies-compone
 import { AddMovieComponent } from './add-movie-component/add-movie-component';
 import { EditMovieComponent } from './edit-movie-component/edit-movie-component';
 import { DeleteMovieComponent } from './delete-movie-component/delete-movie-component';
+import { ViewUsersComponent } from './view-users-component/view-users-component';
+import { AddUserComponent } from './add-user-component/add-user-component';
+import { EditUserComponent } from './edit-user-component/edit-user-component';
+import { DeleteUserComponent } from './delete-user-component/delete-user-component';
+import { ViewGenreApiComponent } from './view-genre-api-component/view-genre-api-component';
 export const routes: Routes = [
     {path:'',component:Home},
     {path:'home',component:Home},
@@ -20,5 +25,13 @@ export const routes: Routes = [
     {path:'addmovie',component:AddMovieComponent},
     {path:'editmovie/:id',component:EditMovieComponent},
     {path:'deletemovie/:id', component:DeleteMovieComponent},
+    //users
+    {path:'viewusers',component:ViewUsersComponent},
+    {path:'adduser',component:AddUserComponent},
+    {path:'edituser/:id',component:EditUserComponent},
+    {path:'deleteuser/:id',component:DeleteUserComponent},
+
+    {path:'viewgenresapi', component: ViewGenreApiComponent},
+
     {path:'**',component:Errorpage}
 ];
