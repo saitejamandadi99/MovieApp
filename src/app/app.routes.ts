@@ -17,6 +17,11 @@ import { ViewGenreApiComponent } from './view-genre-api-component/view-genre-api
 import { EditGenreApiComponent } from './edit-genre-api-component/edit-genre-api-component';
 import { DeleteGenreApiComponent } from './delete-genre-api-component/delete-genre-api-component';
 import { AddGenreApiComponent } from './add-genre-api-component/add-genre-api-component';
+import { LoginApiComponent } from './login-api-component/login-api-component';
+import { ViewUsersApiComponent } from './view-users-api-component/view-users-api-component';
+import { AddUsersApiComponent } from './add-users-api-component/add-users-api-component';
+import { EditUserApiComponent } from './edit-user-api-component/edit-user-api-component';
+import { DeleteUserApiComponent } from './delete-user-api-component/delete-user-api-component';
 export const routes: Routes = [
     {path:'',component:Home},
     {path:'home',component:Home},
@@ -38,6 +43,16 @@ export const routes: Routes = [
     {path:'addgenresapi', component: AddGenreApiComponent},
     {path:'editgenreapi/:id', component: EditGenreApiComponent},
     {path:'deletegenreapi/:id', component: DeleteGenreApiComponent},
+
+    //users api 
+    {path:'viewusersapi', component: ViewUsersApiComponent},
+    {path:'adduserapi', component: AddUsersApiComponent},
+    {path:'edituserapi/:id', component: EditUserApiComponent},
+    {path:'deleteuserapi/:id', component: DeleteUserApiComponent},
+
+    //login 
+
+    {path:'loginUser', component:LoginApiComponent},
 
     {path:'**',component:Errorpage}
 ];

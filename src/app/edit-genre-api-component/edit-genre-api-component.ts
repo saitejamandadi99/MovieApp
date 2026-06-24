@@ -29,28 +29,26 @@ export class EditGenreApiComponent {
   ngOnInit(): void {
       //get the id from the route
       this.id = this.activatedRoute.snapshot.params['id'];
-      this.service.getGenreById(this.id).subscribe({next: (genre) => {
-
+      this.service.getGenreById(this.id).subscribe((genre) => {
+        
         this.genre = genre;
 
         if(this.genre!=null){
         this.genreForm.controls['genreId'].setValue(this.genre?.genreId);
         this.genreForm.controls['genreCode'].setValue(this.genre?.genreCode);
         this.genreForm.controls['genreDesc'].setValue(this.genre?.genreDesc);
+        }
       }
-      },
-      error: (err) => {console.log(err);}
-    });
+    );
   }
 
   editGenre(){
     //onsubmit if the form - call the service method edit genre()
-    this.service.editGenre(this.id, this.genreForm.value as IGenre).subscribe({
-      next:()=>{
+    this.service.editGenre(this.id, this.genreForm.value as IGenre).subscribe(()=>{
         alert("genre updated successfully")
       this.router.navigate(['/viewgenresapi']);
       }
-    })
+    );
     console.log(`Updated values : ${this.genreForm.value}`);
   }
 

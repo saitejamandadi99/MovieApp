@@ -30,7 +30,7 @@ export class DeleteGenreApiComponent implements OnInit {
 
     this.id = this.activatedRoute.snapshot.params['id'];
 
-    this.service.getGenreById(this.id).subscribe({next: (genre) => {
+    this.service.getGenreById(this.id).subscribe((genre) => {
 
         this.genre = genre;
 
@@ -38,19 +38,17 @@ export class DeleteGenreApiComponent implements OnInit {
         this.genreForm.controls['genreId'].setValue(this.genre?.genreId);
         this.genreForm.controls['genreCode'].setValue(this.genre?.genreCode);
         this.genreForm.controls['genreDesc'].setValue(this.genre?.genreDesc);
-      }
+        }
       },
-      error: (err) => {console.log(err);}
-    });
+    );
   }
 
   deleteGenre() {
 
-    this.service.deleteGerne(this.id).subscribe({next: () => {
+    this.service.deleteGerne(this.id).subscribe(() => {
       alert('Genre deleted successfully');
       this.router.navigate(['/viewgenresapi']);},
-      error: (err) => {console.log(err);}
-    });
+    );
 
   }
 
