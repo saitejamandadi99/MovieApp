@@ -22,6 +22,9 @@ import { ViewUsersApiComponent } from './view-users-api-component/view-users-api
 import { AddUsersApiComponent } from './add-users-api-component/add-users-api-component';
 import { EditUserApiComponent } from './edit-user-api-component/edit-user-api-component';
 import { DeleteUserApiComponent } from './delete-user-api-component/delete-user-api-component';
+import { adminGuard } from './guards/admin-guard';
+import { componentDeactivateGuard } from './guards/component-deactivate-guard';
+import { allRolesGuard } from './guards/all-roles-guard';
 export const routes: Routes = [
     {path:'',component:Home},
     {path:'home',component:Home},
@@ -39,8 +42,8 @@ export const routes: Routes = [
     {path:'edituser/:id',component:EditUserComponent},
     {path:'deleteuser/:id',component:DeleteUserComponent},
 
-    {path:'viewgenresapi', component: ViewGenreApiComponent},
-    {path:'addgenresapi', component: AddGenreApiComponent},
+    {path:'viewgenresapi', component: ViewGenreApiComponent, canActivate:[allRolesGuard]},
+    {path:'addgenresapi', component: AddGenreApiComponent, canActivate:[adminGuard], canDeactivate:[componentDeactivateGuard]},
     {path:'editgenreapi/:id', component: EditGenreApiComponent},
     {path:'deletegenreapi/:id', component: DeleteGenreApiComponent},
 
